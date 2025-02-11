@@ -24,4 +24,4 @@ import {
       </IonPage>
     );
   };
-  export default Template;
+ export default Template;
