@@ -1,27 +1,35 @@
 import { 
+  IonButton,
   IonButtons,
     IonContent, 
     IonHeader, 
     IonMenuButton, 
     IonPage, 
     IonTitle, 
-    IonToolbar 
+    IonToolbar, 
+    useIonRouter
 } from '@ionic/react';
 
-const login: React.FC = () => {
+const Login: React.FC = () => {
+  const navigation = useIonRouter();
+
+  const doLogin = () => {
+      navigation.push('/it35-lab/app','forward','replace');
+  }
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot='start'>
-            <IonMenuButton></IonMenuButton>
-          </IonButtons>
-          <IonTitle>login</IonTitle>
+          <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent className='ion-padding'>
+          <IonButton onClick={() => doLogin()} expand="full">
+              Login
+          </IonButton>
       </IonContent>
     </IonPage>
   );
 };
-export default login;
+
+export default Login;
