@@ -65,7 +65,6 @@ import Details from './Details';
                         <Redirect to="/it35-lab/app/home"/>
                     </Route>
                 </IonRouterOutlet>
-
             </IonSplitPane>
         </IonPage>
     );
