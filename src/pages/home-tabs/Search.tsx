@@ -20,7 +20,7 @@ import {
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', }} > Favorites </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', }} > Search </div>
         </IonContent>
       </IonPage>
     );
