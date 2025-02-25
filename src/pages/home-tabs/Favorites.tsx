@@ -1,4 +1,5 @@
 import { 
+  IonButton,
     IonButtons,
       IonContent, 
       IonHeader, 
@@ -25,21 +26,22 @@ import {
         <IonContent fullscreen >
         <IonList>
       <IonItem>
-        <IonLabel>Pokémon Yellow</IonLabel>
+        <IonLabel>MINK</IonLabel>
       </IonItem>
       <IonItem>
-        <IonLabel>Mega Man X</IonLabel>
+        <IonLabel>MLUE</IonLabel>
       </IonItem>
       <IonItem>
-        <IonLabel>The Legend of Zelda</IonLabel>
+        <IonLabel>MLACK</IonLabel>
       </IonItem>
       <IonItem>
-        <IonLabel>Pac-Man</IonLabel>
+        <IonLabel>SUMBAGAY</IonLabel>
       </IonItem>
       <IonItem>
-        <IonLabel>Super Mario World</IonLabel>
+        <IonLabel>MALOLET</IonLabel>
       </IonItem>
     </IonList>
+   <IonButton>Add Favorites</IonButton>
           
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', }} > Favorites </div>
         </IonContent>
