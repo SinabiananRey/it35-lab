@@ -30,11 +30,10 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }} > 
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '30%',  }} > 
       <IonAvatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />  </IonAvatar>
-
-      <IonItem>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" /></IonAvatar>  </div>
+      <IonItem> 
 <IonInput type="password" label="Password:" value="" placeholder="Password">
 <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
   <IonInput label="Username:" placeholder="Username" >
@@ -42,7 +41,6 @@ const Login: React.FC = () => {
   </IonInput>
 
 </IonItem>
-      </div>
           <IonButton onClick={() => doLogin()} expand="full">
               Login
           </IonButton>
