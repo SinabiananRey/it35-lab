@@ -8,6 +8,7 @@ import {
   IonInput, 
   IonInputPasswordToggle, 
   IonItem, 
+  IonLabel, 
   IonPage, 
   IonTitle, 
   IonToolbar, 
@@ -56,19 +57,19 @@ const Login: React.FC = () => {
         </div>
 
         <IonItem>
+          <IonLabel position="floating">Username</IonLabel>
           <IonInput
             type="email"
-            label="Username:"
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
             placeholder="Username"
           />
         </IonItem>
-        
+
         <IonItem>
+          <IonLabel position="floating">Password</IonLabel>
           <IonInput
             type="password"
-            label="Password:"
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
             placeholder="Password"
@@ -83,11 +84,11 @@ const Login: React.FC = () => {
 
         {showAlert &&(
           <IonAlert
-          isOpen={showAlert}
-          onDidDismiss={() => setShowAlert(false)}
-          header= "login failed"
-          message="username or password is incorrect"
-          buttons= {("OK")}
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header="Login failed"
+            message="Username or password is incorrect"
+            buttons={[{ text: 'OK', handler: () => setShowAlert(false) }]}
           />
         )}
       </IonContent>
