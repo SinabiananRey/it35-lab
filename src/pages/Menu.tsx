@@ -16,7 +16,7 @@ import { homeOutline, logOutOutline, rocketOutline, settingsOutline } from 'ioni
 import { Redirect, Route } from 'react-router';
 import Home from './Home';
 import About from './About';
-import EditProfile from './editProfile';
+import EditProfile from './EditProfile';
 import Details from './Details';
 
 const Menu: React.FC = () => {
