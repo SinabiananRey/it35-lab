@@ -1,75 +1,118 @@
-import {
+import { 
+  IonAlert,
+  IonAvatar,
   IonButton,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonMenu,
-  IonMenuToggle,
-  IonPage,
-  IonRouterOutlet,
-  IonSplitPane,
-  IonTitle,
-  IonToolbar,
+  IonContent, 
+  IonIcon, 
+  IonInput, 
+  IonInputPasswordToggle,  
+  IonPage,  
+  IonToast,  
+  useIonRouter,
+  IonImg
 } from '@ionic/react';
-import { homeOutline, logOutOutline, rocketOutline, settingsOutline } from 'ionicons/icons';
-import { Redirect, Route } from 'react-router';
-import Home from './Home';
-import About from './About';
-import Details from './Details';
-import editProfile from './editProfile';
+import { useState } from 'react';
+import { supabase } from '../utils/supabaseClient';
 
+const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void }> = ({ message, isOpen, onClose }) => (
+  <IonAlert
+    isOpen={isOpen}
+    onDidDismiss={onClose}
+    header="Notification"
+    message={message}
+    buttons={['OK']}
+  />
+);
 
-const Menu: React.FC = () => {
-  const path = [
-    {name:'Home', url: '/it35-lab/app/home', icon: homeOutline},
-    {name:'About', url: '/it35-lab/app/about', icon: rocketOutline},
-    {name:'Profile', url: '/it35-lab/app/profile', icon: settingsOutline},
-  ];
+const Login: React.FC = () => {
+  const router = useIonRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const doLogin = async () => {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      setAlertMessage(error.message);
+      setShowAlert(true);
+      return;
+    }
+
+    setShowToast(true); 
+    setTimeout(() => {
+      router.push('/it35-lab/app', 'forward', 'replace');
+    }, 300);
+  };
 
   return (
     <IonPage>
-      <IonSplitPane contentId="main">
-        <IonMenu contentId="main">
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>Menu</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            {path.map((item, index) => (
-              <IonMenuToggle key={index} auto-hide="false">
-                <IonItem routerLink={item.url} routerDirection="forward">
-                  <IonIcon icon={item.icon} slot="start" />
-                  {item.name}
-                </IonItem>
-              </IonMenuToggle>
-            ))}
-            <IonButton
-              routerLink="/it35-lab"
-              routerDirection="back"
-              expand="full"
-              className="ion-margin-top"
+      <IonContent className="ion-padding" fullscreen>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          padding: '20px',
+          gap: '20px'
+        }}>
+          <IonAvatar style={{ width: '120px', height: '120px' }}>
+            <IonImg
+              src="https://freesvg.org/img/abstract-user-flat-4.png"
+              alt="User Avatar"
+            />
+          </IonAvatar>
+
+          <h1 style={{ fontWeight: 'bold', fontSize: '2rem', margin: '10px 0' }}>Login</h1>
+
+          <div style={{ width: '100%', maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <IonInput
+              label="Email"
+              labelPlacement="floating"
+              fill="outline"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onIonChange={(e) => setEmail(e.detail.value!)}
+            />
+            <IonInput
+              label="Password"
+              labelPlacement="floating"
+              fill="outline"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onIonChange={(e) => setPassword(e.detail.value!)}
             >
-              <IonIcon icon={logOutOutline} slot="start" />
-              Logout
+              <IonInputPasswordToggle slot="end" />
+            </IonInput>
+
+            <IonButton onClick={doLogin} expand="block" shape="round" color="primary">
+              Login
             </IonButton>
-          </IonContent>
-        </IonMenu>
 
-        <IonRouterOutlet id="main">
-          <Route exact path="/it35-lab/app/home" component={Home} />
-          <Route exact path="/it35-lab/app/about" component={About} />
-          <Route exact path="/it35-lab/app/details" component={Details} />
-          <Route exact path="/it35-lab/app/profile" component={editProfile} />
+            <IonButton routerLink="/it35-lab/register" expand="block" fill="clear" shape="round" color="medium">
+              Register here!
+            </IonButton>
+          </div>
+        </div>
 
-          <Route exact path="/it35-lab/app">
-            <Redirect to="/it35-lab/app/home" />
-          </Route>
-        </IonRouterOutlet>
-      </IonSplitPane>
+        {/* Alert and Toast Components */}
+        <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
+        <IonToast
+          isOpen={showToast}
+          onDidDismiss={() => setShowToast(false)}
+          message="Login successful! Redirecting..."
+          duration={1500}
+          position="top"
+          color="success"
+        />
+      </IonContent>
     </IonPage>
   );
 };
 
-export default Menu;
+export default Login;
