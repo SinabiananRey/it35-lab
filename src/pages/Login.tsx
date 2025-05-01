@@ -102,7 +102,7 @@ const Login: React.FC = () => {
             {/* reCAPTCHA Component */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <ReCAPTCHA
-                sitekey="6LfjsiorAAAAAE3urcIWg7TpPCuW4AVh-89LppUz"
+                sitekey="6LfRtCorAAAAAJW_BNVn8wkUQe6lXxCS8UBi64Uw"
                 onChange={(token) => setRecaptchaToken(token)}
                 ref={recaptchaRef}
               />
