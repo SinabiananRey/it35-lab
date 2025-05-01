@@ -30,7 +30,7 @@ const editProfile: React.FC = () => {
           if (sessionError || !session || !session.session) {
             setAlertMessage('You must be logged in to access this page.');
             setShowAlert(true);
-            history.push('/it35-lab/login'); // Redirect to login if no session is found
+            history.push('/it35-lab/login'); 
             return;
           }
       
