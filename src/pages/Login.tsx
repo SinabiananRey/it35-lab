@@ -1,18 +1,19 @@
-import { 
+import {
   IonAlert,
   IonAvatar,
   IonButton,
-  IonContent, 
-  IonIcon, 
-  IonInput, 
-  IonInputPasswordToggle,  
-  IonPage,  
-  IonToast,  
+  IonContent,
+  IonIcon,
+  IonInput,
+  IonInputPasswordToggle,
+  IonPage,
+  IonToast,
   useIonRouter,
   IonImg
 } from '@ionic/react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { supabase } from '../utils/supabaseClient';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void }> = ({ message, isOpen, onClose }) => (
   <IonAlert
@@ -31,8 +32,16 @@ const Login: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const doLogin = async () => {
+    if (!recaptchaToken) {
+      setAlertMessage("Please complete the reCAPTCHA.");
+      setShowAlert(true);
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
@@ -41,7 +50,7 @@ const Login: React.FC = () => {
       return;
     }
 
-    setShowToast(true); 
+    setShowToast(true);
     setTimeout(() => {
       router.push('/it35-lab/app', 'forward', 'replace');
     }, 300);
@@ -89,6 +98,15 @@ const Login: React.FC = () => {
             >
               <IonInputPasswordToggle slot="end" />
             </IonInput>
+
+            {/* reCAPTCHA Component */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <ReCAPTCHA
+                sitekey="6LfjsiorAAAAAE3urcIWg7TpPCuW4AVh-89LppUz"
+                onChange={(token) => setRecaptchaToken(token)}
+                ref={recaptchaRef}
+              />
+            </div>
 
             <IonButton onClick={doLogin} expand="block" shape="round" color="primary">
               Login
