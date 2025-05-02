@@ -114,7 +114,7 @@ const Register: React.FC = () => {
             <div style={{
               width: '100%',
               maxWidth: '400px',
-              backgroundColor: '#ffffff',
+              backgroundColor: '#e6f0ff',
               padding: '30px',
               borderRadius: '16px',
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',

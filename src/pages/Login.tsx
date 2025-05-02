@@ -58,26 +58,37 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="ion-padding" fullscreen>
-        <div style={{
+    <IonContent className="ion-padding" fullscreen>
+      <div
+        style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          padding: '20px',
-          gap: '20px'
-        }}>
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: '#e6f0ff',
+            padding: '30px',
+            borderRadius: '20px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+            width: '100%',
+            maxWidth: '420px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+          }}
+        >
           <IonAvatar style={{ width: '120px', height: '120px' }}>
-            <IonImg
-              src="https://freesvg.org/img/rick-mii.png"
-              alt="User Avatar"
-            />
+            <IonImg src="https://freesvg.org/img/rick-mii.png" alt="User Avatar" />
           </IonAvatar>
-
+  
           <h1 style={{ fontWeight: 'bold', fontSize: '2rem', margin: '10px 0' }}>Login</h1>
-
-          <div style={{ width: '100%', maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+  
+          <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <IonInput
               label="Email"
               labelPlacement="floating"
@@ -98,8 +109,7 @@ const Login: React.FC = () => {
             >
               <IonInputPasswordToggle slot="end" />
             </IonInput>
-
-            {/* reCAPTCHA Component */}
+  
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <ReCAPTCHA
                 sitekey="6LfRtCorAAAAAJW_BNVn8wkUQe6lXxCS8UBi64Uw"
@@ -107,18 +117,25 @@ const Login: React.FC = () => {
                 ref={recaptchaRef}
               />
             </div>
-
+  
             <IonButton onClick={doLogin} expand="block" shape="round" color="primary">
               Login
             </IonButton>
-
-            <IonButton routerLink="/it35-lab/register" expand="block" fill="clear" shape="round" color="medium">
+  
+            <IonButton
+              routerLink="/it35-lab/register"
+              expand="block"
+              fill="clear"
+              shape="round"
+              color="medium"
+              style={{ fontSize: '14px' }} // Smaller font for the "Register here" link
+            >
               Register here!
             </IonButton>
           </div>
         </div>
-
-        {/* Alert and Toast Components */}
+  
+        {/* Alerts and Toast */}
         <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
         <IonToast
           isOpen={showToast}
@@ -128,8 +145,9 @@ const Login: React.FC = () => {
           position="top"
           color="success"
         />
-      </IonContent>
-    </IonPage>
+      </div>
+    </IonContent>
+  </IonPage>
   );
 };
 
