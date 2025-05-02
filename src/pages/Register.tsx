@@ -109,12 +109,12 @@ const Register: React.FC = () => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '100vh',
-            backgroundColor: '#f4f5f8',
+            backgroundColor: 'var(--ion-background-color, #f9f9f9)', 
           }}>
             <div style={{
               width: '100%',
               maxWidth: '400px',
-              backgroundColor: '#e6f0ff',
+              backgroundColor: 'var(--ion-background-color, #f9f9f9)', 
               padding: '30px',
               borderRadius: '16px',
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',

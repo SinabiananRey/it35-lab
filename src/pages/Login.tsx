@@ -70,7 +70,7 @@ const Login: React.FC = () => {
       >
         <div
           style={{
-            backgroundColor: '#e6f0ff',
+            backgroundColor: 'var(--ion-background-color, #f9f9f9)', 
             padding: '30px',
             borderRadius: '20px',
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
