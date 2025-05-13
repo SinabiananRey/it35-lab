@@ -1,12 +1,35 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/react';
 
 const Credits: React.FC = () => {
   return (
     <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Credits & Acknowledgement</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
       <IonContent fullscreen className="ion-padding">
-        <h2>Credits & Acknowledgement</h2>
-        <p>Developed by: Your Name / Team</p>
-        <p>Special thanks to: Instructor Name, NBSC Faculty</p>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Developed By</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <p>Your Name / Team Name</p>
+            <p>Course: Application Development</p>
+            <p>Institution: Northern Bukidnon State College</p>
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Special Thanks</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <p><strong>Mr. Cliff Amadeus Evangelio</strong> – Instructor</p>
+            <p><strong>Ms. Cristine Joy Sagaosao</strong> – Instructor</p>
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );
