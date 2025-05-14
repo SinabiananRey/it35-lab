@@ -53,8 +53,43 @@ const SearchContainer: React.FC = () => {
       title: 'UI/UX Design Principles',
       description: 'Design for humans.',
       full: 'UI (User Interface) and UX (User Experience) focus on how an app looks and how it feels to use. Good UI/UX design enhances user satisfaction, engagement, and accessibility.'
-    }
-  ];
+    },
+  {
+    title: 'Version Control with Git',
+    description: 'Track and manage code changes.',
+    full: 'Git is a distributed version control system that helps developers track changes, collaborate, and manage different versions of code efficiently. GitHub, GitLab, and Bitbucket are common platforms using Git.'
+  },
+  {
+    title: 'Responsive Design',
+    description: 'Adapt UI for all devices.',
+    full: 'Responsive design ensures that applications look and function well on devices of various screen sizes, from phones to desktops. Techniques involve flexible grids, media queries, and mobile-first design.'
+  },
+  {
+    title: 'Continuous Integration/Continuous Deployment (CI/CD)',
+    description: 'Automate build, test, and deploy.',
+    full: 'CI/CD is a method to frequently deliver apps by introducing automation into the development lifecycle. It helps teams detect issues early, improve code quality, and deliver updates faster.'
+  },
+  {
+    title: 'State Management',
+    description: 'Manage app data efficiently.',
+    full: 'State management is crucial in modern apps to handle user inputs, API responses, and UI states. Tools like Redux, Context API, or Zustand help developers manage shared state in frontend apps.'
+  },
+  {
+    title: 'Mobile App Performance Optimization',
+    description: 'Speed and efficiency matter.',
+    full: 'Optimizing performance includes reducing app load time, minimizing memory usage, and optimizing network calls. This improves user experience and device battery life.'
+  },
+  {
+    title: 'Security Best Practices',
+    description: 'Protect users and data.',
+    full: 'Security in app development involves practices like input validation, encryption, secure APIs, and authentication to prevent vulnerabilities such as XSS, CSRF, and SQL injection.'
+  },
+  {
+    title: 'Push Notifications',
+    description: 'Keep users engaged.',
+    full: 'Push notifications are messages sent from a server to a user’s device, often used to inform, remind, or re-engage users. They are common in mobile apps and require careful handling to avoid being intrusive.'
+  }
+];
 
   const filteredTopics = topics.filter(topic =>
     topic.title.toLowerCase().includes(searchText.toLowerCase()) ||
